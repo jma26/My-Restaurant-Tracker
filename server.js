@@ -12,7 +12,7 @@ app.use(express.static(path.join(__dirname, './client/static')));
 app.use(bodyParser.json());
 
 // Angular app
-app.use(express.static(path.join(__dirname, '/MovieSearch/dist')));
+app.use(express.static(path.join(__dirname, '/hungryhippoApp/dist')));
 
 // Require mongoose.js to connect to mongoDB
 require('./server/config/mongoose.js');
@@ -23,7 +23,7 @@ route(app);
 
 // Catch all route to Angular routes
 app.all("*", (request, response, next) => {
-    response.send(path.resolve("./MovieSearch/dist/index.html"))
+    response.send(path.resolve("./hungryhippoApp/dist/index.html"))
 });
 
 // Port Number
