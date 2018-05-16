@@ -1,3 +1,21 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.title {
+    color: white;
+    font-size: 48px;
+}
+
+img {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+}
+
 agm-map {
-    height: 500px;
+    height: 650px;
+    width: 650px;
 }
