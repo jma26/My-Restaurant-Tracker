@@ -1,3 +1,4 @@
+<img src="assets/golden-gate.jpg">
 <div class='container'>
   <div class='row justify-content-center'>
     <div class='col'>
@@ -64,10 +65,10 @@
           </div>
           <p class='error' *ngIf='password.value !== confirmPassword.value'> Password does not match </p>
           <!-- End -->
+          <!-- Display invalid fields present  -->
+          <p class='error' *ngIf='registration.invalid || password.value !== confirmPassword.value'> Invalid fields present </p>
         </div>
         <button type='submit'> Register </button>
-        <!-- Display invalid fields present  -->
-        <p class='error' *ngIf='registration.invalid || password.value !== confirmPassword.value'> Invalid fields present </p>
       </form>
       <!-- End of Registration Form -->
     </div>
