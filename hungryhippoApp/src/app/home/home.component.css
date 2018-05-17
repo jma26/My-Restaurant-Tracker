@@ -1,0 +1,15 @@
+img {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+}
+
+.title {
+    color: white;
+}
+
+agm-map {
+    height: 700px;
+    width: 700px;
+}
