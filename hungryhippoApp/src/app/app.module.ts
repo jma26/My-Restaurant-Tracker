@@ -16,7 +16,8 @@ import { LoginRegistrationComponent } from './login-registration/login-registrat
 import { HomeComponent } from './home/home.component';
 
 const appRoutes: Routes = [
-  { path: '', component: LoginRegistrationComponent }
+  { path: '', component: LoginRegistrationComponent },
+  { path: 'home/:fullname', component: HomeComponent }
 ]
 
 @NgModule({
