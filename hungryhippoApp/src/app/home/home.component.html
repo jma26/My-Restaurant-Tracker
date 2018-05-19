@@ -1,13 +1,12 @@
 <img src="assets/tokyo-restaurant.jpg">
 <h1 class="title"> RestaurantFive0 </h1>
-<agm-map [latitude]="lat" [longitude]="lng">
+<agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
   <agm-marker 
     *ngFor="let m of markers"
     [latitude]="m.lat"
     [longitude]="m.lng"
     [markerDraggable]="m.draggable"
     [openInfoWindow]="true">
-
     <agm-info-window>
       <strong> {{ m.label }} </strong>
     </agm-info-window>

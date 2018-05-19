@@ -10,6 +10,7 @@ export class HomeComponent implements OnInit {
   title = 'RestaurantFive0';
   lat: number = 37.3382082;
   lng: number = -121.8863286;
+  zoom: number = 11;
   
   constructor() { }
 
