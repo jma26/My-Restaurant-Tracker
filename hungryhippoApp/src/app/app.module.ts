@@ -14,17 +14,20 @@ import { AgmCoreModule } from '@agm/core';
 import { AppComponent } from './app.component';
 import { LoginRegistrationComponent } from './login-registration/login-registration.component';
 import { HomeComponent } from './home/home.component';
+import { NewRestaurantReviewComponent } from './new-restaurant-review/new-restaurant-review.component';
 
 const appRoutes: Routes = [
   { path: '', component: LoginRegistrationComponent },
-  { path: 'home/:fullname', component: HomeComponent }
+  { path: 'home/:fullname', component: HomeComponent },
+  { path: 'new-restaurant-review/:fullname', component: NewRestaurantReviewComponent }
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginRegistrationComponent,
-    HomeComponent
+    HomeComponent,
+    NewRestaurantReviewComponent
   ],
   imports: [
     BrowserModule,
