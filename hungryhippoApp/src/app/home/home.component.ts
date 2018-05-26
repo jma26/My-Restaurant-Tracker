@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { google } from '@agm/core/services/google-maps-types';
 
 @Component({
@@ -11,10 +12,16 @@ export class HomeComponent implements OnInit {
   lat: number = 37.3382082;
   lng: number = -121.8863286;
   zoom: number = 11;
-  
-  constructor() { }
+  fullname: String;
+
+  constructor(private route: ActivatedRoute) {
+   }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.fullname = params['fullname'];
+      console.log(this.fullname);
+    })
   }
 
   markers: marker[] = [
