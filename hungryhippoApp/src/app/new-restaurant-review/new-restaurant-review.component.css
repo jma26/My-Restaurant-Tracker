@@ -2,3 +2,17 @@
 .navbar-custom {
   background-color: #067BC2;
 }
+
+/* Form Styling */
+.submit-button {
+  border-radius: 5px;
+  margin-top: 8px;
+  padding: 4px;
+}
+
+.review-group {
+  border: 1px solid gray;
+  border-color: #6699CC;
+  padding: 8px;
+}
+
