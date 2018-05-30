@@ -22,26 +22,26 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg-4">
-      <form>
+      <form [formGroup]="new_review" (ngSubmit)='new()'>
         <div class="form-group">
           <label for="restaurant_name"> Restaurant Name </label>
-          <input type="text" class="form-control" id="restaurant_name">
+          <input type="text" class="form-control" formControlName="restaurant_name" id="restaurant_name">
         </div>
         <div class="form-group">
           <label for="longitude"> Longitude </label>
-          <input type="number" class="form-control" id="longitude">
+          <input type="number" class="form-control" formControlName="longitude" id="longitude">
           <label for="latitude"> Latitude </label>
-          <input type="number" class="form-control" id="latitude">
+          <input type="number" class="form-control" formControlName="latitude" id="latitude">
         </div>
         <div class="form-group review-group">
           <h3> Your Review</h3>
-          <input type="file" class="form-control" id="image">
+          <input type="file" class="form-control" formControlName="image" id="image">
           <label for="reviewer"> Reviewer </label>
-          <input type="text" class="form-control" id="reviewer" value="{{ fullname }}">
+          <input type="text" class="form-control" formControlName="reviewer" id="reviewer" value="{{ fullname }}">
           <label for="review"> Review </label>
-          <textarea class="form-control" id="review"></textarea>
+          <textarea class="form-control" formControlName="review" id="review"></textarea>
           <label for="stars"> Star Rating </label>
-          <select id="stars" class="form-control">
+          <select id="stars" class="form-control" formControlName="stars">
             <option value="1"> 1 </option>
             <option value="2"> 2 </option>
             <option value="3"> 3 </option>
