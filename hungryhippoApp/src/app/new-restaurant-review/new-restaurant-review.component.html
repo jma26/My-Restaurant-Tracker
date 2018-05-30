@@ -22,16 +22,16 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg-4">
-      <form [formGroup]="new_review" (ngSubmit)='new()'>
+      <form [formGroup]="new_review" (ngSubmit)='newReview()'>
         <div class="form-group">
           <label for="restaurant_name"> Restaurant Name </label>
           <input type="text" class="form-control" formControlName="restaurant_name" id="restaurant_name">
         </div>
         <div class="form-group">
           <label for="longitude"> Longitude </label>
-          <input type="number" class="form-control" formControlName="longitude" id="longitude">
+          <input type="number" class="form-control" formControlName="lng" id="longitude">
           <label for="latitude"> Latitude </label>
-          <input type="number" class="form-control" formControlName="latitude" id="latitude">
+          <input type="number" class="form-control" formControlName="lat" id="latitude">
         </div>
         <div class="form-group review-group">
           <h3> Your Review</h3>
