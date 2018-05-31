@@ -9,6 +9,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class NewRestaurantReviewComponent implements OnInit {
   fullname: String;
+  selectedFile: File;
 
   new_review: FormGroup;
   restaurant_name: FormControl;
@@ -55,7 +56,7 @@ export class NewRestaurantReviewComponent implements OnInit {
     });
   }
 
-  newReview() {
+  submitReview() {
     if (this.new_review.valid) {
       console.log(this.new_review.value);
       console.log('Form successfully submitted');
@@ -63,6 +64,11 @@ export class NewRestaurantReviewComponent implements OnInit {
       console.log(this.new_review.value);
       console.log('Form unsuccessfully submitted');
     }
+  }
+
+  onFileChange(event) {
+    this.selectedFile = event.target.files[0];
+    console.log(event);
   }
 
 
