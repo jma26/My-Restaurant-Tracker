@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ReviewService } from '../services/review.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -21,7 +22,7 @@ export class NewRestaurantReviewComponent implements OnInit {
   image: FormControl;
 
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(private route: ActivatedRoute, private router: Router, private _reviewService: ReviewService) { }
 
   ngOnInit() {
     // Get user name
@@ -41,7 +42,7 @@ export class NewRestaurantReviewComponent implements OnInit {
     this.reviewer = new FormControl(this.fullname, Validators.required),
     this.review = new FormControl("", [Validators.required, Validators.minLength(10)]),
     this.stars = new FormControl(1, Validators.required),
-    this.image = new FormControl(null)
+    this.image = new FormControl(this.selectedFile)
   }
 
   createForm() {
@@ -57,12 +58,16 @@ export class NewRestaurantReviewComponent implements OnInit {
   }
 
   submitReview() {
-    if (this.new_review.valid) {
+    if (this.new_review.invalid) {
+      console.log('Form unsuccessfully submitted - Invalid fields present');
       console.log(this.new_review.value);
-      console.log('Form successfully submitted');
     } else {
+      console.log('Form successfully submitted - Valid fields present');
       console.log(this.new_review.value);
-      console.log('Form unsuccessfully submitted');
+      let observable = this._reviewService.newReview(this.new_review.value);
+      observable.subscribe(data => {
+        console.log(data);
+      })
     }
   }
 
