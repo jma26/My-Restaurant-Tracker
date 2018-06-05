@@ -7,6 +7,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, FormsModule } from '@angul
 // Services
 import { LoginService } from './services/login.service';
 import { RegisterService } from './services/register.service';
+import { ReviewService } from './services/review.service';
 
 import { AgmCoreModule } from '@agm/core';
 
@@ -39,7 +40,7 @@ const appRoutes: Routes = [
       apiKey: 'AIzaSyCFDzK21ltulX-A1BxEJgUsrYdrYiPf5gw'
     })
   ],
-  providers: [LoginService, RegisterService],
+  providers: [LoginService, RegisterService, ReviewService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
