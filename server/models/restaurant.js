@@ -9,7 +9,7 @@ const RestaurantSchema = mongoose.Schema({
         reviewer: { type: String, required: [true, 'Reviewer\'s name is required']},
         review: { type: String, required: [true, 'Review can not be blank'] },
         stars: { type: Number, required: [true, 'Star rating required'], min: 1, max: 5 },
-        images: [{ data: Buffer, contentType: String }]
+        images: [{ data: Buffer, contentType: String, filename: String }]
     }]
 });
 
