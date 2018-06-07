@@ -42,7 +42,7 @@ export class NewRestaurantReviewComponent implements OnInit {
     this.reviewer = new FormControl(this.fullname, Validators.required),
     this.review = new FormControl("", [Validators.required, Validators.minLength(10)]),
     this.stars = new FormControl(1, Validators.required),
-    this.image = new FormControl(this.selectedFile)
+    this.image = new FormControl(null)
   }
 
   createForm() {
@@ -65,15 +65,30 @@ export class NewRestaurantReviewComponent implements OnInit {
       console.log('Form successfully submitted - Valid fields present');
       console.log(this.new_review.value);
       let observable = this._reviewService.newReview(this.new_review.value);
+      console.log(this.new_review.value);
       observable.subscribe(data => {
+        if (data['error']) {
+          console.log(data['error']);
+        }
         console.log(data);
       })
     }
   }
 
   onFileChange(event) {
-    this.selectedFile = event.target.files[0];
-    console.log(event);
+    let reader = new FileReader();
+    if (event.target.files && event.target.files.length > 0) {
+      let file = event.target.files[0];
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.new_review.get('image').setValue({
+          filename: file.name,
+          filetype: file.type,
+          value: reader.result.split(',')[1]
+        });
+      }
+    }
+    console.log(this.new_review);
   }
 
 
