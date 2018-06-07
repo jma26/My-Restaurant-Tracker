@@ -20,7 +20,8 @@ import { NewRestaurantReviewComponent } from './new-restaurant-review/new-restau
 const appRoutes: Routes = [
   { path: '', component: LoginRegistrationComponent },
   { path: 'home/:fullname', component: HomeComponent },
-  { path: 'new-restaurant-review/:fullname', component: NewRestaurantReviewComponent }
+  { path: 'new-restaurant-review/:fullname', component: NewRestaurantReviewComponent },
+  { path: '**', component: LoginRegistrationComponent }
 ]
 
 @NgModule({
