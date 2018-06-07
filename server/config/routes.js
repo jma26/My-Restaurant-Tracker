@@ -22,7 +22,7 @@ module.exports = function(app) {
     })
     // Create new restaurant review
     app.post('/newreview', function(request, response) {
-        console.log('Creating new restaurant review, @routes.js pinging');
+        console.log('Creating new restaurant review, @routes.js pinging', request.body);
         Restaurants.add_review(request, response);
     })
 }
