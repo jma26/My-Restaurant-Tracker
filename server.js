@@ -7,9 +7,12 @@ const mongoose = require('mongoose');
 const app = express();
 
 // Body Parser Middleware
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({
+    parameterLimit: 100000,
+    limit: '50mb',
+    extended: true }));
 app.use(express.static(path.join(__dirname, './client/static')));
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '50mb'}));
 
 // Angular app
 app.use(express.static(path.join(__dirname, '/hungryhippoApp/dist')));
