@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ReviewService } from '../services/review.service';
 import { google } from '@agm/core/services/google-maps-types';
 
 @Component({
@@ -14,13 +15,25 @@ export class HomeComponent implements OnInit {
   zoom: number = 11;
   fullname: String;
 
-  constructor(private route: ActivatedRoute, private router: Router) {
+  constructor(private route: ActivatedRoute, private router: Router, private _reviewService: ReviewService) {
    }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.fullname = params['fullname'];
       console.log(this.fullname);
+    })
+    this.getRestaurantReviews();
+  }
+
+  getRestaurantReviews() {
+    let observable = this._reviewService.getReviews();
+    observable.subscribe(data => {
+      if (data['error']) {
+        console.log(data['error']);
+      } else {
+        console.log(data);
+      }
     })
   }
 
