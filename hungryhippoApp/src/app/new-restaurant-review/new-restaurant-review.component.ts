@@ -69,8 +69,10 @@ export class NewRestaurantReviewComponent implements OnInit {
       observable.subscribe(data => {
         if (data['error']) {
           console.log(data['error']);
+        } else {
+          alert('New review successfully added');
+          this.router.navigate(['/home', this.fullname]);
         }
-        console.log(data);
       })
     }
   }
