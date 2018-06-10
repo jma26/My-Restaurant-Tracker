@@ -6,10 +6,10 @@
   <div class="collapse navbar-collapse" id="navbarSupportContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/home', fullname]"> Home </a>
+        <a class="nav-link" [routerLink]="['']"> Home </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/new-restaurant-review', fullname]"> New Review </a>
+        <a class="nav-link" [routerLink]="['/newreview']"> New Review </a>
       </li>
     </ul>
     <ul class="navbar-nav">
@@ -22,15 +22,15 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg-6" class="agm-container">
-      <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+      <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" id="map">
         <agm-marker
           *ngFor="let m of markers"
           [latitude]="m.lat"
           [longitude]="m.lng"
-          [markerDraggable]="m.draggable"
+          [markerDraggable]="false"
           [openInfoWindow]="true">
           <agm-info-window>
-            <strong> {{ m.label }} </strong>
+            <strong> {{ m.restaurant_name }} </strong>
           </agm-info-window>
         </agm-marker>
       </agm-map>

@@ -19,10 +19,6 @@ export class HomeComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.fullname = params['fullname'];
-      console.log(this.fullname);
-    })
     this.getRestaurantReviews();
   }
 
@@ -32,41 +28,14 @@ export class HomeComponent implements OnInit {
       if (data['error']) {
         console.log(data['error']);
       } else {
-        console.log(data);
+        let markers = data;
+        console.log(markers);
       }
     })
   }
-
-  markers: marker[] = [
-    {
-      lat: 37.431896,
-      lng: -121.903623,
-      label: 'Teaspoon',
-      draggable: false
-    },
-    {
-      lat: 37.402715,
-      lng: -121.933038,
-      label: 'Curry Up Now',
-      draggable: false
-    },
-    {
-    lat: 37.392646,
-    lng: -121.977432,
-    label: 'Get Fried Fry Cafe',
-    draggable: false
-    }
-  ]
 
   logout() {
     this.router.navigate(['']);
   }
 
-}
-
-interface marker {
-	lat: number;
-	lng: number;
-	label?: string;
-	draggable: boolean;
 }
