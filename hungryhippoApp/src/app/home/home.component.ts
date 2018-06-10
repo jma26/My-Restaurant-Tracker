@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
       if (data['error']) {
         console.log(data['error']);
       } else {
-        for (let i = 0; i < data.length; i++) {
+        for (let i = 0; i < data['length']; i++) {
           this.markers.push(data[i]);
         }
         console.log(this.markers);
