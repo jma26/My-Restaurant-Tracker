@@ -22,7 +22,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg-6" class="agm-container">
-      <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" id="map">
+      <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
         <agm-marker
           *ngFor="let m of markers"
           [latitude]="m.lat"

@@ -10,15 +10,17 @@ import { google } from '@agm/core/services/google-maps-types';
 })
 export class HomeComponent implements OnInit {
   title = 'RestaurantFive0';
-  lat: number = 37.3382082;
-  lng: number = -121.8863286;
-  zoom: number = 11;
+  lat: Number = 37.3382082;
+  lng: Number = -121.8863286;
+  zoom: Number = 11;
   fullname: String;
+  markers: any[];
 
   constructor(private route: ActivatedRoute, private router: Router, private _reviewService: ReviewService) {
    }
 
   ngOnInit() {
+    this.markers = [];
     this.getRestaurantReviews();
   }
 
@@ -28,10 +30,12 @@ export class HomeComponent implements OnInit {
       if (data['error']) {
         console.log(data['error']);
       } else {
-        let markers = data;
-        console.log(markers);
+        for (let i = 0; i < data.length; i++) {
+          this.markers.push(data[i]);
+        }
+        console.log(this.markers);
       }
-    })
+    });
   }
 
   logout() {
