@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   zoom: Number = 11;
   fullname: String;
   markers: any[];
+  previous;
 
   constructor(private route: ActivatedRoute, private router: Router, private _reviewService: ReviewService) {
    }
@@ -36,6 +37,14 @@ export class HomeComponent implements OnInit {
         console.log(this.markers);
       }
     });
+  }
+
+  clickedMarker(infowindow) {
+    console.log(infowindow);
+    if (this.previous) {
+      this.previous.close();
+    }
+    this.previous = infowindow;
   }
 
   logout() {

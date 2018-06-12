@@ -28,8 +28,9 @@
           [latitude]="m.lat"
           [longitude]="m.lng"
           [markerDraggable]="false"
-          [openInfoWindow]="true">
-          <agm-info-window>
+          [openInfoWindow]="true"
+          (markerClick)="clickedMarker(infowindow)">
+          <agm-info-window #infowindow>
             <strong> {{ m.restaurant_name }} </strong>
           </agm-info-window>
         </agm-marker>
