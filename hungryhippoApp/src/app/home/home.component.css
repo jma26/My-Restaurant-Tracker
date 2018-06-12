@@ -1,9 +1,16 @@
 agm-map {
-    width: 500px;
-    height: 500px;
+    width: 50vw;
+    height: 75vh;
 }
 
 /* Custom navbar color */
 .navbar-custom {
   background-color: #067BC2;
+}
+
+@media only screen and (max-width: 1200px) {
+  agm-map {
+    width: 100vw;
+    height: 75vh;
+  }
 }

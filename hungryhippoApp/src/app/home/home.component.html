@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
-  <a class="navbar-brand" href="#"> RestaurantFive0 </a>
+<nav class="navbar navbar-expand-md navbar-dark navbar-custom">
+  <a class="navbar-brand" [routerLink]="['']"> RestaurantFive0 </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportContent">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -21,7 +21,7 @@
 </nav>
 <div class="container-fluid">
   <div class="row">
-    <div class="col-lg-6" class="agm-container">
+    <div class="col-lg-8" class="agm-container">
       <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
         <agm-marker
           *ngFor="let m of markers"
@@ -36,12 +36,12 @@
         </agm-marker>
       </agm-map>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-4">
       <h1> {{ review.restaurant_name }} </h1>
       <div *ngFor="let content of review.review_content">
         <p> {{ content.review }} </p>
-        <p> {{ content.stars }} </p>
-        <p> {{ content.reviewer }} </p>
+        <p> Star rating: {{ content.stars }} </p>
+        <p> Reviewer: {{ content.reviewer }} </p>
       </div>
     </div>
   </div>
