@@ -39,6 +39,9 @@
     <div class="col-lg-4">
       <h1> {{ review.restaurant_name }} </h1>
       <div *ngFor="let content of review.review_content">
+        <div class="image-container">
+          <img class="img-fluid" [src]="base64Image" *ngIf="content.images.length > 0">
+        </div>
         <p> {{ content.review }} </p>
         <p [innerHTML]="stars | noSanitize" [ngClass]="{'checked': true}"></p>
         <p> Star rating: {{ content.stars }} </p>
