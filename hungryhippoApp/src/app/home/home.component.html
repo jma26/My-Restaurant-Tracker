@@ -40,6 +40,7 @@
       <h1> {{ review.restaurant_name }} </h1>
       <div *ngFor="let content of review.review_content">
         <p> {{ content.review }} </p>
+        <p [innerHTML]="stars | noSanitize" [ngClass]="{'checked': true}"></p>
         <p> Star rating: {{ content.stars }} </p>
         <p> Reviewer: {{ content.reviewer }} </p>
       </div>

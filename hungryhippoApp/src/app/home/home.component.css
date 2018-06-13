@@ -14,3 +14,7 @@ agm-map {
     height: 75vh;
   }
 }
+
+.checked {
+  color: orange;
+}

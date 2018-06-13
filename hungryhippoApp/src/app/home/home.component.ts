@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ReviewService } from '../services/review.service';
-import { google } from '@agm/core/services/google-maps-types';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +16,7 @@ export class HomeComponent implements OnInit {
   markers: any[];
   review: any = false;
   previous;
+  stars: String;
 
   constructor(private route: ActivatedRoute, private router: Router, private _reviewService: ReviewService) {
    }
@@ -48,6 +48,16 @@ export class HomeComponent implements OnInit {
       this.previous.close();
     }
     this.previous = infowindow;
+    this.getStars(this.review);
+  }
+
+  getStars(review) {
+    this.stars = '';
+    console.log(review.review_content[0].stars);
+    for (let i = 0; i < review.review_content[0].stars; i++) {
+      this.stars += "<i class='fas fa-star'></i>";
+    }
+    console.log(this.stars);
   }
 
   logout() {
