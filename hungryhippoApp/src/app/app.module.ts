@@ -8,6 +8,9 @@ import { FormControl, FormGroup, ReactiveFormsModule, FormsModule } from '@angul
 import { ReviewService } from './services/review.service';
 import { AgmCoreModule } from '@agm/core';
 
+// Pipes
+import { NoSanitizePipe } from './pipes/no-sanitize.pipe';
+
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -22,7 +25,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     HomeComponent,
-    NewRestaurantReviewComponent
+    NewRestaurantReviewComponent,
+    NoSanitizePipe
   ],
   imports: [
     BrowserModule,
