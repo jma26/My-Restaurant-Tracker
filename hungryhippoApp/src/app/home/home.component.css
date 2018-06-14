@@ -5,7 +5,16 @@ agm-map {
 
 /* Custom navbar color */
 .navbar-custom {
-  background-color: #067BC2;
+  background-color: #1A8EF0;
+}
+
+/* Navbar Icon color */
+.nav-item .nav-link, .navbar-brand {
+  color: #FFFFFF;
+}
+
+.nav-link:hover, .navbar-brand:hover {
+  color: #ACACAC !important;
 }
 
 @media only screen and (max-width: 1200px) {
