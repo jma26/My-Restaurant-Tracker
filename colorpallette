@@ -1,0 +1,14 @@
+Color Semantics
+Bootstrap's UI colors contain semantic information and shouldn't be changed arbitrarily. However we can tweak them to better fit the color palette.
+
+Dodger Blue	#1a8ef0	Primary
+Ebony Clay	#29273f	Info
+Ocean Green	#3da580	Success
+Tussock	#ba9548	Warning
+Pomegranate	#f44336	Danger
+
+F5F6F1
+7FBCD6
+1A8EF0
+806D77
+29273F
