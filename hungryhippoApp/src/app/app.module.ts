@@ -15,16 +15,19 @@ import { NoSanitizePipe } from './pipes/no-sanitize.pipe';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NewRestaurantReviewComponent } from './new-restaurant-review/new-restaurant-review.component';
+import { AboutComponent } from './about/about.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'newreview', component: NewRestaurantReviewComponent },
+  { path: 'about', component: AboutComponent }
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    AboutComponent,
     NewRestaurantReviewComponent,
     NoSanitizePipe
   ],
