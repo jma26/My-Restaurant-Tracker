@@ -4,3 +4,11 @@
     margin: 0px;
     padding: 0px;
 }
+
+.about-container {
+  background-color:  #C8AA6D;
+}
+
+.container-fluid {
+  height: 100vh;
+}
