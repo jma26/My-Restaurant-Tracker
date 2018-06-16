@@ -1,14 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 * {
     font-family: 'Lato', sans-serif;
-    margin: 0px;
-    padding: 0px;
+}
+
+html, body {
+  height: 100%;
+}
+
+.container-fluid {
+  height: 100%;
 }
 
 .about-container {
   background-color:  #C8AA6D;
+  height: auto !important;
+  min-height: 100%;
 }
 
-.container-fluid {
+body {
   height: 100vh;
 }

@@ -1,0 +1,28 @@
+@media only screen and (max-width: 2000px) {
+  .profile-image {
+    width: 400px;
+  }
+}
+
+.awesome-icons {
+  vertical-align: middle;
+}
+
+.awesome-icons {
+  padding: 0px 8px;
+}
+
+.intro-headline {
+  font-size: 48px;
+  margin-top: 48px;
+}
+
+.content, .technology-list {
+  font-size: 20px;
+  margin: 24px 0px;
+}
+
+.profile-image {
+  border-radius: 25%;
+  margin: 48px 0px;
+}
