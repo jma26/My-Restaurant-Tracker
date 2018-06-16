@@ -12,3 +12,8 @@ F5F6F1
 1A8EF0
 806D77
 29273F
+
+.content = 20px font-size;
+.headlines = 48px font-size
+
+space between content - margin 24px or 48px
