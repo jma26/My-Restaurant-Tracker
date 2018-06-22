@@ -20,9 +20,32 @@ export class HomeComponent implements OnInit {
   stars: String;
   base64Image: any;
   bufferImage: any;
+  window: any;
+  FB: any;
 
   constructor(private route: ActivatedRoute, private router: Router, private _reviewService: ReviewService, private _domSanitizer: DomSanitizer) {
-   }
+    // Load SDK asynchronously
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    this.window.fbAsyncInit = function() {
+      console.log('fbasyncinit');
+      this.FB.init({
+          appId      : '177628672915663',
+          status     : true,
+          cookie     : true,
+          xfbml      : true,
+          version    : 'v3.0'
+      });
+      this.FB.AppEvents.logPageView();
+    }
+  };
+
 
   ngOnInit() {
     this.markers = [];
