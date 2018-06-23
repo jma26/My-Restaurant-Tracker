@@ -8,19 +8,20 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   window: any;
   FB: any;
+  isLogoutVisible: boolean = false;
+  isLoginVisible: boolean = true;
 
   constructor() {
-    // Load SDK asynchronously
-    (function(d, s, id){
+    // Load the SDK asynchronously
+    (function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) {return;}
-      js = d.createElement(s); js.id = id; js.async = true;;
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id; js.async = true;
       js.src = "https://connect.facebook.net/en_US/sdk.js";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 
     window.fbAsyncInit = function() {
-      console.log('fbasyncinit');
       FB.init({
           appId      : '177628672915663',
           status     : true,
@@ -28,22 +29,27 @@ export class AppComponent implements OnInit {
           xfbml      : true,
           version    : 'v3.0'
       });
+      // Subscribe to any status change
+      FB.Event.subscribe('auth.statusChange', function(response) {
+        console.log(response);
+        if (response.authResponse && response.status === 'connected') {
+          console.log('Hello');
+        }
+      })
     }
-  };
+  }
 
   ngOnInit() { }
 
-  loginWithFacebook() {
+  login() {
     FB.login(function(response) {
-      if (response.authResponse) {
-        console.log(response);
-      }
+      console.log(response);
     })
   }
 
   logout() {
     FB.logout(function(response) {
-      console.log(response);
-    })
+      alert('You have successfully logged out');
+    });
   }
 }
