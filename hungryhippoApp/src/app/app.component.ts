@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
+// Initialize window, fb
+declare var window: any;
+declare var FB: any;
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  window: any;
-  FB: any;
   isLogoutVisible: boolean = false;
   isLoginVisible: boolean = true;
 
