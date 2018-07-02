@@ -1,15 +1,23 @@
+.agm-container {
+  padding: 0px;
+}
+
 agm-map {
-    width: 50vw;
-    height: 75vh;
+  width: 100vw;
+  height: 40vh;
 }
 
 @media only screen and (max-width: 1200px) {
   agm-map {
     width: 100vw;
-    height: 65vh;
+    height: 50vh;
   }
 }
 
 .checked {
   color: orange;
+}
+
+.restaurant-name {
+  text-align: center;
 }
