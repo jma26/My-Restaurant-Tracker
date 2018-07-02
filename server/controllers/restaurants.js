@@ -74,7 +74,7 @@ module.exports = {
             "comment": request.body.comment.comment,
             "name": request.body.comment.name
         }
-        Restaurant.findOneAndUpdate({"_id": request.body.restaurant}, {$push: {comments: comment}}, function(error, result) {
+        Restaurant.findOneAndUpdate({"_id": request.body.restaurant}, {$push: {comments: comment}}, {new: true}, function(error, result) {
             if (error) {
                 response.json(error);
                 console.log(error);
