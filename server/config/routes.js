@@ -13,4 +13,9 @@ module.exports = function(app) {
         console.log('Retrieving restaurant reviews, @routes.js pinging');
         Restaurants.getReviews(request, response);
     })
+    // Add new comment 
+    app.put('/newcomment', function(request, response) {
+        console.log('Retrieving restaurant reviews, @routes.js pinging');
+        Restaurants.addComment(request, response);
+    })
 }
