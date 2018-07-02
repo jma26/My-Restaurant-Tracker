@@ -1,0 +1,17 @@
+/* Custom navbar color */
+.navbar-custom {
+  background-color: #1A8EF0;
+}
+
+/* Navbar Icon color */
+.nav-item .nav-link, .navbar-brand {
+  color: #FFFFFF;
+}
+
+nav a:hover, .navbar-brand:hover {
+  color: #ACACAC !important;
+}
+
+
+
+

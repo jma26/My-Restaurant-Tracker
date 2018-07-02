@@ -25,11 +25,6 @@ export class NewRestaurantReviewComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router, private _reviewService: ReviewService) { }
 
   ngOnInit() {
-    // Get user name
-    this.route.params.subscribe(params => {
-      this.fullname = params['fullname'];
-      console.log(this.fullname);
-    });
     // Run CreateFormControls, createForm Function
     this.createFormControls();
     this.createForm();
@@ -39,7 +34,7 @@ export class NewRestaurantReviewComponent implements OnInit {
     this.restaurant_name = new FormControl("", Validators.required),
     this.lng = new FormControl("", Validators.required),
     this.lat = new FormControl("", Validators.required),
-    this.reviewer = new FormControl(this.fullname, Validators.required),
+    this.reviewer = new FormControl("Jesse", Validators.required),
     this.review = new FormControl("", [Validators.required, Validators.minLength(10)]),
     this.stars = new FormControl(1, Validators.required),
     this.image = new FormControl(null)
@@ -71,7 +66,7 @@ export class NewRestaurantReviewComponent implements OnInit {
           console.log(data['error']);
         } else {
           alert('New review successfully added');
-          this.router.navigate(['/home', this.fullname]);
+          this.router.navigate(['/']);
         }
       })
     }

@@ -65,5 +65,22 @@ module.exports = {
                 response.json(result);
             }
         })
+    },
+    addComment: function(request, response) {
+        console.log('Controllers @restaurant.js route pinging - addComment');
+        console.log(request.body.comment);
+        console.log(request.body.restaurant);
+        let comment = {
+            "comment": request.body.comment.comment,
+            "name": request.body.comment.name
+        }
+        Restaurant.findOneAndUpdate({"_id": request.body.restaurant}, {$push: {comments: comment}}, {new: true}, function(error, result) {
+            if (error) {
+                response.json(error);
+                console.log(error);
+            } else {
+                response.json(result);
+            }
+        })
     }
 }

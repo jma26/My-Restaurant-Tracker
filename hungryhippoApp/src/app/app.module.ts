@@ -5,31 +5,31 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 // Services
-import { LoginService } from './services/login.service';
-import { RegisterService } from './services/register.service';
 import { ReviewService } from './services/review.service';
-
 import { AgmCoreModule } from '@agm/core';
+
+// Pipes
+import { NoSanitizePipe } from './pipes/no-sanitize.pipe';
 
 
 import { AppComponent } from './app.component';
-import { LoginRegistrationComponent } from './login-registration/login-registration.component';
 import { HomeComponent } from './home/home.component';
 import { NewRestaurantReviewComponent } from './new-restaurant-review/new-restaurant-review.component';
+import { AboutComponent } from './about/about.component';
 
 const appRoutes: Routes = [
-  { path: '', component: LoginRegistrationComponent },
-  { path: 'home/:fullname', component: HomeComponent },
-  { path: 'new-restaurant-review/:fullname', component: NewRestaurantReviewComponent },
-  { path: '**', component: LoginRegistrationComponent }
+  { path: '', component: HomeComponent },
+  { path: 'newreview', component: NewRestaurantReviewComponent },
+  { path: 'about', component: AboutComponent }
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginRegistrationComponent,
     HomeComponent,
-    NewRestaurantReviewComponent
+    AboutComponent,
+    NewRestaurantReviewComponent,
+    NoSanitizePipe
   ],
   imports: [
     BrowserModule,
@@ -41,7 +41,7 @@ const appRoutes: Routes = [
       apiKey: 'AIzaSyCFDzK21ltulX-A1BxEJgUsrYdrYiPf5gw'
     })
   ],
-  providers: [LoginService, RegisterService, ReviewService],
+  providers: [ReviewService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

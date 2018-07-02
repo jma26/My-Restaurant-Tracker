@@ -1,9 +1,23 @@
-agm-map {
-    width: 500px;
-    height: 500px;
+.agm-container {
+  padding: 0px;
 }
 
-/* Custom navbar color */
-.navbar-custom {
-  background-color: #067BC2;
+agm-map {
+  width: 100vw;
+  height: 40vh;
+}
+
+@media only screen and (max-width: 1200px) {
+  agm-map {
+    width: 100vw;
+    height: 50vh;
+  }
+}
+
+.checked {
+  color: orange;
+}
+
+.restaurant-name {
+  text-align: center;
 }
