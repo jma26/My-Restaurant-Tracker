@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-// Initialize window, fb
+// Declare window, fb
 declare var window: any;
 declare var FB: any;
 
@@ -12,6 +12,7 @@ declare var FB: any;
 export class AppComponent implements OnInit {
   isLogoutVisible: boolean = false;
   isLoginVisible: boolean = true;
+  userLoggedIn: boolean = false;
 
   constructor() {
     // Load the SDK asynchronously
@@ -46,11 +47,13 @@ export class AppComponent implements OnInit {
   login() {
     FB.login(function(response) {
       console.log(response);
+      this.userLoggedIn = true;
     })
   }
 
   logout() {
     FB.logout(function(response) {
+      this.userLoggedIn = false;
       alert('You have successfully logged out');
     });
   }
