@@ -29,9 +29,9 @@
       </div>
     </div>
     <div class="col-xl-6">
-      <form>
+      <form [formGroup]="new_comment" (ngSubmit)="submitComment()">
         <label for="comment"> Comment </label>
-        <input type="text" class="form-control" formControlName="comment">
+        <input type="text" class="form-control" formControlName="comment" id="comment">
         <input type="submit" value="Submit" class="submit-button">
       </form>
     </div>

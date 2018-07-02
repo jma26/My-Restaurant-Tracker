@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ReviewService } from '../services/review.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
@@ -20,12 +21,47 @@ export class HomeComponent implements OnInit {
   stars: String;
   base64Image: any;
   bufferImage: any;
+  restaurantID: any;
+
+  new_comment: FormGroup;
+  comment: FormControl;
+  user: FormControl;
 
   constructor(private route: ActivatedRoute, private router: Router, private _reviewService: ReviewService, private _domSanitizer: DomSanitizer) { };
 
   ngOnInit() {
     this.markers = [];
     this.getRestaurantReviews();
+    this.createFormControls();
+    this.createForm();
+  }
+
+  createFormControls() {
+    this.comment = new FormControl("", Validators.required),
+    this.user = new FormControl("Jesse", Validators.required);
+  }
+
+  createForm() {
+    this.new_comment = new FormGroup({
+      comment: this.comment,
+      name: this.user,
+    })
+  }
+
+  submitComment() {
+    if (this.new_comment.invalid) {
+      console.log('Form unsuccessfully submitted - Invalid fields present');
+    } else {
+      console.log('Form successfully submitted - Valid fields present');
+      let observable = this._reviewService.newComment({comment: this.new_comment.value, restaurant: this.restaurantID});
+      observable.subscribe(data => {
+        if (data['error']) {
+          console.log(data['error']);
+        } else {
+          console.log('Success', data);
+        }
+      })
+    }
   }
 
   getRestaurantReviews() {
@@ -46,6 +82,8 @@ export class HomeComponent implements OnInit {
     console.log(infowindow);
     this.review = markerInfo;
     console.log(this.review);
+    this.restaurantID = this.review._id;
+    console.log(this.review.review_content[0]._id);
     console.log(this.review.review_content[0].images[0]);
     if (this.previous) {
       this.previous.close();
