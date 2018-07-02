@@ -3,20 +3,8 @@
     font-family: 'Lato', sans-serif;
 }
 
-html, body {
-  height: 100%;
-}
-
-.container-fluid {
-  height: 100%;
-}
-
 .about-container {
   background-color:  #C8AA6D;
   height: auto !important;
-  min-height: 100%;
-}
-
-body {
-  height: 100vh;
+  min-height: 100vh;
 }
