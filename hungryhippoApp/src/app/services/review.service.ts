@@ -11,6 +11,11 @@ export class ReviewService {
     return this._http.post('/newreview', newReview);
   }
 
+  newComment(newComment) {
+    console.log('Review.service.ts pinging ' + newComment);
+    return this._http.put('/newcomment', newComment);
+  }
+
   getReviews() {
     console.log('Review.service.ts pinging- getReviews()');
     return this._http.get('/getreviews');
