@@ -1,10 +1,13 @@
 .agm-container {
+  margin-top: 16px;
   padding: 0px;
+  text-align: center;
 }
 
 agm-map {
-  width: 100vw;
+  width: 50vw;
   height: 40vh;
+  display: inline-block;
 }
 
 @media only screen and (max-width: 1200px) {
@@ -12,6 +15,28 @@ agm-map {
     width: 100vw;
     height: 50vh;
   }
+
+  .agm-container {
+    margin-top: 0px;
+  }
+}
+
+.review-container {
+  border: 2px solid black;
+  border-radius: 4px;
+  margin: 16px;
+}
+
+.review-content {
+  border: 2px solid green;
+  border-radius: 4px;
+  margin-top: 16px;
+  padding: 16px;
+  text-align: center;
+}
+
+.stars, .review-user {
+  text-align: center;
 }
 
 .checked {

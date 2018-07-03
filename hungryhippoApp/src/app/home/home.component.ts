@@ -97,7 +97,7 @@ export class HomeComponent implements OnInit {
     this.stars = '';
     console.log(review.review_content[0].stars);
     for (let i = 0; i < review.review_content[0].stars; i++) {
-      this.stars += "<i class='fas fa-star'></i>";
+      this.stars += "<i class='fas fa-star fa-3x'></i>";
     }
     console.log(this.stars);
   }
