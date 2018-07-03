@@ -58,6 +58,7 @@ export class HomeComponent implements OnInit {
         if (data['error']) {
           console.log(data['error']);
         } else {
+          this.review = data;
           console.log('Success', data);
         }
       })
