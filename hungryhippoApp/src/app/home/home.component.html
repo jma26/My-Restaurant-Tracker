@@ -27,10 +27,15 @@
       </div>
     </div>
   </div>
-  <div class="row" *ngIf="review">
+  <div class="row justify-content-center" *ngIf="review">
+    <div class="col-xl-12">
+        <div class="line-break"></div>
+    </div>
+  </div>
+  <div class="row justify-content-center" *ngIf="review">
     <div class="col-xl-6">
       <form [formGroup]="new_comment" (ngSubmit)="submitComment()">
-        <label for="comment"> Comment </label>
+        <label for="comment"> Comment below! </label>
         <input type="text" class="form-control" formControlName="comment" id="comment">
         <input type="submit" value="Submit" class="submit-button">
       </form>
