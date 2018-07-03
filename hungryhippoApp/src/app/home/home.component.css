@@ -64,3 +64,32 @@ agm-map {
 .line-break {
   border: 2px solid #AA9F91;
 }
+
+.comment-headline {
+  text-align: center;
+}
+
+#comment, .submit-button {
+  border-radius: 8px;
+}
+
+input[type="submit"] {
+  margin-left: 8px;
+}
+
+.comment-container {
+  margin: 16px 0px;
+  height: 500px;
+  overflow: auto;
+}
+
+.user-comments {
+  background-color: #AA9F91;
+  border-radius: 8px;
+  max-width: 100%;
+  padding: 16px;
+}
+
+.user-name {
+  color: #28303F;
+}
