@@ -39,14 +39,12 @@ export class HomeComponent implements OnInit {
   }
 
   createFormControls() {
-    this.comment = new FormControl("", Validators.required),
-    this.user = new FormControl("", Validators.required);
+    this.comment = new FormControl("", Validators.required)
   }
 
   createForm() {
     this.new_comment = new FormGroup({
-      comment: this.comment,
-      name: this.user,
+      comment: this.comment
     })
   }
 
@@ -55,7 +53,7 @@ export class HomeComponent implements OnInit {
       console.log('Form unsuccessfully submitted - Invalid fields present');
     } else {
       console.log('Form successfully submitted - Valid fields present');
-      let observable = this._reviewService.newComment({comment: this.new_comment.value, restaurant: this.restaurantID});
+      let observable = this._reviewService.newComment({comment: this.new_comment.value, restaurant: this.restaurantID, user: this.fbName});
       observable.subscribe(data => {
         if (data['error']) {
           console.log(data['error']);
@@ -68,6 +66,11 @@ export class HomeComponent implements OnInit {
   }
 
   getRestaurantReviews() {
+    // Get user name from fb service
+    this._fbService.dataUser$.subscribe(data => {
+      this.fbName = data;
+    })
+    console.log(this.fbName);
     let observable = this._reviewService.getReviews();
     observable.subscribe(data => {
       if (data['error']) {
