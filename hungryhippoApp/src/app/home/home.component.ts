@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ReviewService } from '../services/review.service';
+import { FacebookService } from '../services/facebook.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -22,12 +23,13 @@ export class HomeComponent implements OnInit {
   base64Image: any;
   bufferImage: any;
   restaurantID: any;
+  fbName: any = false;
 
   new_comment: FormGroup;
   comment: FormControl;
   user: FormControl;
 
-  constructor(private route: ActivatedRoute, private router: Router, private _reviewService: ReviewService, private _domSanitizer: DomSanitizer) { };
+  constructor(private route: ActivatedRoute, private router: Router, private _reviewService: ReviewService, private _fbService: FacebookService, private _domSanitizer: DomSanitizer) { };
 
   ngOnInit() {
     this.markers = [];
@@ -38,7 +40,7 @@ export class HomeComponent implements OnInit {
 
   createFormControls() {
     this.comment = new FormControl("", Validators.required),
-    this.user = new FormControl("Jesse", Validators.required);
+    this.user = new FormControl("", Validators.required);
   }
 
   createForm() {
@@ -80,12 +82,14 @@ export class HomeComponent implements OnInit {
   }
 
   clickedMarker(infowindow, markerInfo) {
-    console.log(infowindow);
+    // Get user name from fb service
+    this._fbService.dataUser$.subscribe(data => {
+      this.fbName = data;
+    })
+    console.log(this.fbName);
     this.review = markerInfo;
     console.log(this.review);
     this.restaurantID = this.review._id;
-    console.log(this.review.review_content[0]._id);
-    console.log(this.review.review_content[0].images[0]);
     if (this.previous) {
       this.previous.close();
     }
@@ -96,7 +100,6 @@ export class HomeComponent implements OnInit {
 
   getStars(review) {
     this.stars = '';
-    console.log(review.review_content[0].stars);
     for (let i = 0; i < review.review_content[0].stars; i++) {
       this.stars += "<i class='fas fa-star fa-3x'></i>";
     }
