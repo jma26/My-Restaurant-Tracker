@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { FacebookService } from './services/facebook.service';
 
 // Declare window, fb
 declare var window: any;
 declare var FB: any;
+declare var name: any;
 
 @Component({
   selector: 'app-root',
@@ -13,8 +15,9 @@ export class AppComponent implements OnInit {
   isLogoutVisible: boolean = false;
   isLoginVisible: boolean = true;
   userLoggedIn: boolean = false;
+  name: String;
 
-  constructor() {
+  constructor(private _fbService: FacebookService) {
     // Load the SDK asynchronously
     (function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
@@ -47,8 +50,19 @@ export class AppComponent implements OnInit {
   login() {
     FB.login(function(response) {
       console.log(response);
-      this.userLoggedIn = true;
+      if (response.status === 'connected' && response.authResponse) {
+        this.userLoggedIn = true;
+        let token = response.accessToken;
+        FB.api('/me', 'get', {access_token: token, fields: 'name'}, function(response) {
+          console.log(response);
+          name = response.name;
+          console.log(this.name);
+        })
+      }
     })
+    // Set user name with fbService
+    console.log(name);
+    this._fbService.setName(name);
   }
 
   logout() {
@@ -56,5 +70,7 @@ export class AppComponent implements OnInit {
       this.userLoggedIn = false;
       alert('You have successfully logged out');
     });
+    // Set user name to '' when logged out
+    this._fbService.setName('');
   }
 }
