@@ -72,7 +72,7 @@ module.exports = {
         console.log(request.body.restaurant);
         let comment = {
             "comment": request.body.comment.comment,
-            "name": request.body.comment.name
+            "name": request.body.user
         }
         Restaurant.findOneAndUpdate({"_id": request.body.restaurant}, {$push: {comments: comment}}, {new: true}, function(error, result) {
             if (error) {
