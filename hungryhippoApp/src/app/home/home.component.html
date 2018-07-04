@@ -38,8 +38,8 @@
       <div *ngFor="let comment of review.comments">
         <p class="user-comments"> <span class="user-name">{{ comment.name }}</span>: {{ comment.comment }} </p>
       </div>
-      <form [formGroup]="new_comment" (ngSubmit)="submitComment()">
-        <div class="input-group">
+      <form [formGroup]="new_comment" (ngSubmit)="submitComment()" *ngIf="fbName">
+        <div class="input-group" >
           <input type="text" placeholder="Write a comment..." class="form-control" formControlName="comment" id="comment">
           <div class="input-group-append">
             <input type="submit" value="Submit" class="submit-button">
