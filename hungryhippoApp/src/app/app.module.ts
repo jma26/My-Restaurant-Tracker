@@ -6,6 +6,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, FormsModule } from '@angul
 
 // Services
 import { ReviewService } from './services/review.service';
+import { FacebookService } from './services/facebook.service';
 import { AgmCoreModule } from '@agm/core';
 
 // Pipes
@@ -41,7 +42,7 @@ const appRoutes: Routes = [
       apiKey: 'AIzaSyCFDzK21ltulX-A1BxEJgUsrYdrYiPf5gw'
     })
   ],
-  providers: [ReviewService],
+  providers: [ReviewService, FacebookService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
