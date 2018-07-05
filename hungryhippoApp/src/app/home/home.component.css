@@ -22,7 +22,9 @@ agm-map {
   }
 
   .agm-container {
+    box-sizing: border-box;
     margin-top: 0px;
+    margin-right: 34px;
   }
 }
 
