@@ -61,7 +61,7 @@ export class AppComponent implements OnInit {
     })
     // Set user name with fbService
     console.log(name);
-    this._fbService.setName(name.name);
+    this._fbService.setName(name);
   }
 
   checkCredentials() {
