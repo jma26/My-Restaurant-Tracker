@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FacebookService } from './services/facebook.service';
 
-// Declare window, fb
 declare var window: any;
 declare var FB: any;
 declare var name: any;
@@ -15,7 +14,7 @@ export class AppComponent implements OnInit {
   isLogoutVisible: boolean = false;
   isLoginVisible: boolean = true;
   userLoggedIn: boolean = false;
-  name: String;
+  isReviewAvailable: boolean = false;
 
   constructor(private _fbService: FacebookService) {
     // Load the SDK asynchronously
@@ -39,13 +38,14 @@ export class AppComponent implements OnInit {
       FB.Event.subscribe('auth.statusChange', function(response) {
         console.log(response);
         if (response.authResponse && response.status === 'connected') {
-          console.log('Hello');
+          console.log('Connected to FB');
         }
       })
     }
   }
 
   ngOnInit() { }
+
 
   login() {
     FB.login(function(response) {
@@ -56,13 +56,21 @@ export class AppComponent implements OnInit {
         FB.api('/me', 'get', {access_token: token, fields: 'name'}, function(response) {
           console.log(response);
           name = response.name;
-          console.log(this.name);
         })
       }
     })
     // Set user name with fbService
     console.log(name);
-    this._fbService.setName(name);
+    this._fbService.setName(name.name);
+  }
+
+  checkCredentials() {
+    if (name === "Jesse Ma") {
+      this.isReviewAvailable = true;
+    } else {
+      this.isReviewAvailable = false;
+    }
+    console.log(name, this.isReviewAvailable);
   }
 
   logout() {
@@ -70,6 +78,7 @@ export class AppComponent implements OnInit {
       this.userLoggedIn = false;
       alert('You have successfully logged out');
     });
+    this.isReviewAvailable = false;
     // Set user name to '' when logged out
     this._fbService.setName('');
   }
